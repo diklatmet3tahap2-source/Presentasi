@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Praktik ERD - MakanKuy</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f0f4f8; overflow: hidden; color: #333; }
+        .slide { display: none; width: 100vw; height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 5% 10%; box-sizing: border-box; background: white; text-align: left; animation: fadeIn 0.4s ease-in-out; }
+        .slide.active { display: flex; }
+        .title-slide { text-align: center; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; }
+        .content-wrapper { max-width: 1000px; width: 100%; }
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 2.5rem; color: #1e3c72; margin-bottom: 1.5rem; border-bottom: 4px solid #f39c12; padding-bottom: 0.5rem; display: inline-block; }
+        .title-slide h2 { color: #f39c12; border-bottom: none; font-size: 2rem; font-weight: 400; margin-top: 0; }
+        .title-slide p { color: #e0e0e0; font-size: 1.5rem; }
+        p, li { font-size: 1.6rem; color: #555; line-height: 1.6; margin-bottom: 1rem; }
+        ul, ol { margin-left: 2rem; padding-left: 1rem; }
+        li::marker { color: #f39c12; font-weight: bold; }
+        .highlight { background-color: #ffeaa7; padding: 0 5px; font-weight: 600; color: #d35400; }
+        
+        .controls { position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; gap: 10px; }
+        button { background: #1e3c72; color: white; border: none; padding: 12px 24px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.2s; }
+        button:hover { background: #f39c12; color: #1e3c72; font-weight: bold; }
+        .page-num { position: fixed; bottom: 30px; left: 30px; font-size: 1.2rem; color: #999; font-weight: bold; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1 -->
+    <div class="slide title-slide active">
+        <h1>TUGAS PRAKTIK MERANCANG ERD</h1>
+        <h2>Mata Pelajaran: Basis Data</h2>
+        <p>Topik: Pemodelan Data & Normalisasi</p>
+        <br><br>
+        <p style="color: white; font-size: 1.2rem; margin-top: 2rem; opacity: 0.8;">Gunakan tanda panah (Kanan/Kiri) untuk navigasi</p>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Skenario Bisnis: "MakanKuy"</h2>
+            <p>"MakanKuy" adalah aplikasi pemesanan makanan secara daring.</p>
+            <p>Tim pengembang saat ini sedang merancang struktur basis data awal agar aplikasi ini dapat berjalan dengan lancar dan tidak ada data yang tumpang tindih.</p>
+            <p><strong>Peran Anda:</strong> Sebagai Database Designer, Anda ditugaskan untuk memodelkan struktur data tersebut ke dalam bentuk diagram relasional!</p>
+        </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Proses Bisnis & Aturan Sistem</h2>
+            <ol>
+                <li><strong>Pelanggan</strong> mendaftar akun untuk melakukan pemesanan (sistem menyimpan data diri pelanggan secara lengkap).</li>
+                <li><strong>Restoran</strong> mendaftarkan item menu beserta harganya (setiap restoran bisa memiliki puluhan variasi menu).</li>
+                <li>Pelanggan dapat membuat <strong>Pesanan</strong> yang berisi beberapa menu sekaligus dalam satu waktu.</li>
+                <li><strong>Pengirim (Driver)</strong> akan ditugaskan untuk mengantar pesanan tersebut ke alamat pelanggan.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Instruksi 1: Identifikasi Entitas</h2>
+            <p>Berdasarkan skenario sebelumnya, tugas pertama Anda:</p>
+            <ul>
+                <li>Tentukan <strong>Entitas</strong> apa saja yang terlibat dalam sistem "MakanKuy".</li>
+                <li>Jabarkan minimal <span class="highlight">3-4 Atribut</span> yang relevan untuk masing-masing entitas tersebut.</li>
+                <li>Tentukan atribut mana yang bertindak sebagai <span class="highlight">Primary Key (PK)</span> untuk setiap entitas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Instruksi 2: Relasi & Kardinalitas</h2>
+            <p>Setelah entitas terbentuk, analisislah hubungannya:</p>
+            <ul>
+                <li>Tentukan hubungan (relasi) antar entitas tersebut.</li>
+                <li>Tentukan <strong>Kardinalitasnya</strong> (apakah <em>One-to-One</em>, <em>One-to-Many</em>, atau <em>Many-to-Many</em>).</li>
+                <li><strong>Analisis Kritis:</strong> Temukan di antara entitas mana relasi <span class="highlight">Many-to-Many (M:N)</span> terjadi! Jelaskan alasan logisnya.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Instruksi 3: Pemecahan Relasi (Junction)</h2>
+            <p>Aturan Database Relasional: Relasi <em>Many-to-Many</em> <strong>TIDAK</strong> diperbolehkan.</p>
+            <ul>
+                <li>Buatlah sebuah entitas perantara (<span class="highlight">Junction Table</span>) untuk memecah relasi M:N tersebut menjadi dua relasi 1:N.</li>
+                <li>Berikan nama yang tepat untuk tabel perantara tersebut.</li>
+                <li>Tentukan atribut apa saja (termasuk <strong>Foreign Key / FK</strong>) yang wajib ada di dalam entitas perantara tersebut agar relasi terhubung dengan benar.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+        <div class="content-wrapper">
+            <h2>Instruksi 4: Penggambaran ERD</h2>
+            <p>Sebagai langkah final, wujudkan desain Anda ke dalam visual:</p>
+            <ul>
+                <li>Gambarkan <strong>Entity Relationship Diagram (ERD)</strong> akhir secara lengkap dan rapi.</li>
+                <li>Gunakan standar notasi <span class="highlight">Crow's Foot</span>.</li>
+                <li>Pastikan semua <strong>Primary Key (PK)</strong> dan <strong>Foreign Key (FK)</strong> tergambar atau tertulis dengan jelas pada diagram Anda.</li>
+            </ul>
+            <p style="margin-top: 2rem; font-style: italic; color: #7f8c8d;">*Gunakan platform seperti Draw.io, dbdiagram.io, atau gambarkan secara rapi di kertas sesuai instruksi pengajar.</p>
+        </div>
+    </div>
+
+    <div class="page-num" id="pageIndicator">Slide 1 / 7</div>
+    
+    <div class="controls">
+        <button onclick="prevSlide()">&#10094; Prev</button>
+        <button onclick="nextSlide()">Next &#10095;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const pageIndicator = document.getElementById('pageIndicator');
+        
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            if(index >= slides.length) currentSlide = 0;
+            if(index < 0) currentSlide = slides.length - 1;
+            slides[currentSlide].classList.add('active');
+            pageIndicator.innerText = `Slide ${currentSlide + 1} / ${slides.length}`;
+        }
+        
+        function nextSlide() { currentSlide++; showSlide(currentSlide); }
+        function prevSlide() { currentSlide--; showSlide(currentSlide); }
+        
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            else if(e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
